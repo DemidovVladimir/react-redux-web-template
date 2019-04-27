@@ -4,7 +4,7 @@ import thunkMiddleware from 'redux-thunk'
 import {exampleReducer} from "./reducers/example-reducer";
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
-import { helloSaga } from './sagas/exampleSaga';
+import rootSaga from './sagas/exampleSaga';
 
 const reducer = combineReducers({
     example: exampleReducer,
@@ -23,7 +23,7 @@ export function initializeStore() {
             )
         )
     );
-    store.sagaTask = sagaMiddleware.run(helloSaga);
+    store.sagaTask = sagaMiddleware.run(rootSaga);
 
     return store
 }

@@ -1,6 +1,7 @@
 export const actionTypes = {
     TICK: 'TICK',
     INCREMENT: 'INCREMENT',
+    INCREMENT_ASYNC: 'INCREMENT_ASYNC',
     DECREMENT: 'DECREMENT',
     RESET: 'RESET'
 }
@@ -18,6 +19,10 @@ export const startClock = dispatch => {
 
 export const incrementCount = () => dispatch => {
     return dispatch({ type: actionTypes.INCREMENT })
+}
+
+export const incrementAsyncCount = () => dispatch => {
+    return dispatch({ type: actionTypes.INCREMENT_ASYNC})
 }
 
 export const decrementCount = () => dispatch => {
