@@ -1,19 +1,31 @@
-import { connect } from 'react-redux'
-import Clock from './clock'
-import Counter from './counter'
+import React, {Component} from 'react'
+import { connect,  } from 'react-redux'
+import {getPosts} from "../actions/example-actions";
+import {bindActionCreators} from "redux";
 
-function Examples ({ lastUpdate, light }) {
-  return (
-    <div>
-      <Clock lastUpdate={lastUpdate} light={light} />
-      <Counter />
-    </div>
-  )
+class Examples extends Component {
+    render() {
+        return (
+            <div>
+                <button onClick={() => this.props.getPosts()}>View posts</button>
+            </div>
+        )
+    }
 }
 
-function mapStateToProps (state) {
-  const { lastUpdate, light } = state.example
-  return { lastUpdate, light }
+function mapStateToProps(state) {
+    const {data} = state.example;
+    return {data}
 }
 
-export default connect(mapStateToProps)(Examples)
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators(
+        {
+            getPosts
+        },
+        dispatch
+    );
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Examples)

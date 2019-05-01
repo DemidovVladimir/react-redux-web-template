@@ -1,0 +1,4 @@
+.gitignore
+.next
+.idea
+node_modules

@@ -3,7 +3,9 @@ import {actionTypes} from '../actions/example-actions';
 export const exampleInitialState = {
     lastUpdate: 0,
     light: false,
-    count: 0
+    count: 0,
+    data: null,
+    error: null
 }
 
 // REDUCERS
@@ -26,6 +28,10 @@ export const exampleReducer = (state = exampleInitialState, action) => {
             return Object.assign({}, state, {
                 count: exampleInitialState.count
             })
+        case actionTypes.GET_POSTS_SUCCESS:
+            return {...state, data: action.payload}
+        case actionTypes.API_FAIL:
+            return {...state, error: action.payload}
         default:
             return state
     }
