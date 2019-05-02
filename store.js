@@ -4,7 +4,7 @@ import thunkMiddleware from 'redux-thunk'
 import {exampleReducer} from "./reducers/example-reducer";
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
-import rootSaga from './sagas/exampleSaga';
+import rootSaga from './sagas/example-saga';
 
 const reducer = combineReducers({
     example: exampleReducer,

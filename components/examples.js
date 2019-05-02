@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
 import { connect,  } from 'react-redux'
-import {getPosts} from "../actions/example-actions";
+import {getUsers} from "../actions/db-actions";
 import {bindActionCreators} from "redux";
 
 class Examples extends Component {
     render() {
         return (
             <div>
-                <button onClick={() => this.props.getPosts()}>View posts</button>
+                <button onClick={() => this.props.getUsers()}>Get users</button>
             </div>
         )
     }
@@ -22,7 +22,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return bindActionCreators(
         {
-            getPosts
+            getUsers
         },
         dispatch
     );
