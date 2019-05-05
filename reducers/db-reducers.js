@@ -1,6 +1,6 @@
 import {actionTypes} from '../actions/db-actions';
 
-export const exampleInitialState = {
+export const initialState = {
     client: null,
     db: null,
     error: null,
@@ -8,7 +8,7 @@ export const exampleInitialState = {
 }
 
 // REDUCERS
-export const dbReducer = (state = exampleInitialState, action) => {
+export const dbReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.GET_DB_CLIENT_SUCCESS:
             return {...state, client: action.payload}

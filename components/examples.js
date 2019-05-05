@@ -8,14 +8,15 @@ class Examples extends Component {
         return (
             <div>
                 <button onClick={() => this.props.getUsers()}>Get users</button>
+                <p>{this.props.users}</p>
             </div>
         )
     }
 }
 
 function mapStateToProps(state) {
-    const {data} = state.example;
-    return {data}
+    const {users} = state.dbclient;
+    return {users}
 }
 
 
