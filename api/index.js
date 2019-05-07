@@ -1,2 +1,3 @@
 // userApi.js
-export const fetchPostsAPI = () => fetch(`http://localhost:3000/api/posts/`);
+import 'isomorphic-unfetch';
+export const fetchPostsAPI = () => fetch(`https://webhooks.mongodb-stitch.com/api/client/v2.0/app/crossroad-zyama/service/crossroad/incoming_webhook/getusers`);
