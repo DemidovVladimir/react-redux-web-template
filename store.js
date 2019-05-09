@@ -4,10 +4,12 @@ import thunkMiddleware from 'redux-thunk';
 import {dbReducer} from "./reducers/db-reducers";
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
-import rootSaga from './sagas/example-saga';
+import rootSaga from './sagas/root-saga';
+import {s3Reducer} from "./reducers/s3-reducers";
 
 const reducer = combineReducers({
-    dbclient: dbReducer
+    dbclient: dbReducer,
+    s3client: s3Reducer
 });
 
 export function initializeStore() {

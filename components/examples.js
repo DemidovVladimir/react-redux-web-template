@@ -1,20 +1,20 @@
-import React, {Component} from 'react'
-import { connect,  } from 'react-redux'
+import React, {Component} from 'react';
+import { connect,  } from 'react-redux';
 import {getUsers} from "../actions/db-actions";
+import {readFile, postFile} from '../actions/s3-actions';
 import {bindActionCreators} from "redux";
 import 'isomorphic-unfetch';
 
 class Examples extends Component {
     constructor(props) {
         super(props);
-        this.onFormSubmit = this.onFormSubmit.bind(this)
-        this.onChange = this.onChange.bind(this)
-        this.fileUpload = this.fileUpload.bind(this)
+        this.onFormSubmit = this.onFormSubmit.bind(this);
+        this.onChange = this.onChange.bind(this);
     }
 
     onFormSubmit(e){
         e.preventDefault();
-        this.fileUpload()
+        this.props.postFile();
     }
 
     onChange(e) {
@@ -22,32 +22,17 @@ class Examples extends Component {
         var reader  = new FileReader();
         reader.addEventListener("load", () => {
             const base64Image = reader.result.split('base64,')[1];
-            this.setState({
+            this.props.readFile({
                 fileContent: base64Image,
                 fileName: uploadedFile.name,
-                fileType: uploadedFile.type
-            })
+                fileType: uploadedFile.type,
+                bucket: 'crossroad-user-files'
+            });
         }, false);
 
         if (e.target.files[0]) {
             reader.readAsDataURL(e.target.files[0]);
         }
-    }
-
-    fileUpload(){
-        return fetch('https://webhooks.mongodb-stitch.com/api/client/v2.0/app/crossroad-zyama/service/crossroad/incoming_webhook/postpicture', {
-            method: "POST",
-            headers: {
-                "Content-Type": "multipart/form-data"
-            },
-            body: JSON.stringify({
-                picture: this.state.fileContent,
-                bucket: 'crossroad-user-files',
-                fileName: this.state.fileName,
-                fileType: this.state.fileType
-            })
-        })
-            .then( response => console.log(response) )
     }
 
     render() {
@@ -74,7 +59,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return bindActionCreators(
         {
-            getUsers
+            getUsers,
+            readFile,
+            postFile
         },
         dispatch
     );
