@@ -1,57 +1,59 @@
-# Redux Thunk example
+# REACT + MONGO STITCH EXAMPLE
+
+## Tech stack of the app
+
+ReactJS, 
+Redux, 
+Redux-Saga,
+NextJS,
+MongoDB-Atlas,
+MongoDB-Stitch,
+AWS S3 
 
 ## How to use
 
-### Using `create-next-app`
+# To run the app:
 
-Execute [`create-next-app`](https://github.com/segmentio/create-next-app) with [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) or [npx](https://github.com/zkat/npx#readme) to bootstrap the example:
+1. Create account on the mongodb-atlas
+2. Create cluster and populate some dummy data to the mongodb collection at that cluster
+3. Create the application at mognodb-stitch
+4. To been able to use the app with nextjs( isomorphic application ) create separate webhooks at mongodb-stitch, because currently mongodb-stitch client for browser and server does not work with isomorphic apps.
+5. To give the ability to use Auth API of the mongodb-atlas, enable the type of the auth service provided by mongo-atlas.
+6. To give the ability to upload pictures and othe files, register on AWS S3 and create the bucket for files.
+7. Create AWS external service in mongo-stitch.
+8. Populate your achieved credentials to the .ENV file and you should be ready to rock.
 
-```bash
-npx create-next-app --example with-redux-thunk with-redux-thunk-app
-# or
-yarn create next-app --example with-redux-thunk with-redux-thunk-app
+
+### Install now globally with 
+```
+npm i -g now
+npm i -g nodemon
 ```
 
-### Download manually
-
-Download the example:
-
-```bash
-curl https://codeload.github.com/zeit/next.js/tar.gz/canary | tar -xz --strip=2 next.js-canary/examples/with-redux-thunk
-cd with-redux-thunk
+### To run the app locally execute: 
 ```
-
-Install it and run:
-
-```bash
-npm install
-npm run dev
-# or
 yarn
-yarn dev
 ```
-
-Deploy it to the cloud with [now](https://zeit.co/now) ([download](https://zeit.co/download))
-
-```bash
+ ```
+yarn dev
+``` 
+### To deploy the app to now zeit:
+```
 now
 ```
 
-## The idea behind the example
+## The idea behind the app template
+This app is using nextjs, so it is isomorphic application.
+This app is the template for easy to use and fast to deploy react based web apps.
 
-This example shows how to integrate Redux and Redux Thunk in Next.js.
+# The template infrastructure:
 
-Usually splitting your app state into `pages` feels natural but sometimes you'll want to have global state for your app. This is an example on how you can use redux that also works with Next.js's universal rendering approach.
-
-In the first example we are going to display a digital clock that updates every second. The first render is happening in the server and then the browser will take over. To illustrate this, the server rendered clock will have a different background color (black) than the client one (grey).
-
-The Redux `Provider` is implemented in `pages/_app.js`. Since the `MyApp` component is wrapped in `withReduxStore` the redux store will be automatically initialized and provided to `MyApp`, which in turn passes it off to `react-redux`'s `Provider` component.
-
-All pages have access to the redux store using `connect` from `react-redux`.
-
-On the server side every request initializes a new store, because otherwise different user data can be mixed up. On the client side the same store is used, even between page changes.
-
-The example under `components/counter.js`, shows a simple incremental counter implementing a common Redux pattern of mapping state to props. Again, the first render is happening in the server and instead of starting the count at 0, it will dispatch an action in redux that starts the count at 1. This continues to highlight how each navigation triggers a server render first and then a client render when switching pages on the client side
-
-For simplicity and readability, Reducers, Actions, and Store creators are all in the same file: `store.js`
-# react-redux-web-template
+1. Pages folder is the routing system for the react frontend part of the application. 
+2. API folder is the one that creates an express based api by using Zeit Now project, so you do not need to create your custom server.
+3. Server folder contains the replica of the API functionality, so you could run it locally and test how the app works.
+4. Redux is included into: actions, reducers and sagas folders.
+5. Communication with the MongoDB Stitch is made via stitch-webhooks folder.
+6. Redux store is configured in the store.js file.
+7. The app is using 'dotenv' library to populate the environment variables to the app running locally.
+8. To inject environment variables in the production ready app use next.config.js
+9. The webhooks-examples contains the examples of the mongodb-stitch webhooks examples, that you can copy and paste to your account (Do not forget to change the values).
