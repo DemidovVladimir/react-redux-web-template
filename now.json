@@ -1,8 +1,9 @@
 {
   "version": 2,
   "name": "react-express-stitch-nextjs",
-  "env": {
-    "NODE_ENV": "production"
-  },
-  "builds": [{ "src": "next.config.js", "use": "@now/next" }]
+  "builds": [
+    { "src": "next.config.js", "use": "@now/next" },
+    { "src": "api/check/index.js", "use": "@now/node" },
+    {"src": "package.json", "use": "@now/next"}
+  ]
 }

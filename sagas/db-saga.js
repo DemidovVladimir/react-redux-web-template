@@ -1,5 +1,5 @@
 import { put, call, take } from 'redux-saga/effects';
-import {fetchPostsEndpoint} from "../api";
+import {fetchPostsEndpoint} from "../stitch-webhooks/index";
 
 export function* fetchPosts() {
     try {

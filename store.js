@@ -6,10 +6,12 @@ import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './sagas/root-saga';
 import {s3Reducer} from "./reducers/s3-reducers";
+import {apiReducer} from "./reducers/api-reducers";
 
 const reducer = combineReducers({
     dbclient: dbReducer,
-    s3client: s3Reducer
+    s3client: s3Reducer,
+    apiclient: apiReducer
 });
 
 export function initializeStore() {

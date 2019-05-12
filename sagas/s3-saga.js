@@ -1,5 +1,5 @@
 import {call, put, select, take} from 'redux-saga/effects';
-import {fileUploadEndpoint} from "../api";
+import {fileUploadEndpoint} from "../stitch-webhooks/index";
 
 const fileToUploadContent = state => state.s3client.fileToUploadContent;
 const fileToUploadTitle = state => state.s3client.fileToUploadTitle;

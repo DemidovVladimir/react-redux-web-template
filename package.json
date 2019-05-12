@@ -20,6 +20,7 @@
     "body-parser": "^1.19.0",
     "dotenv": "^8.0.0",
     "express": "^4.16.4",
+    "fetch-readablestream": "^0.2.0",
     "isomorphic-fetch": "^2.2.1",
     "isomorphic-unfetch": "^3.0.0",
     "mongodb": "^3.2.3",
@@ -38,7 +39,8 @@
     "redux-observable": "^1.0.0",
     "redux-saga": "^1.0.2",
     "redux-thunk": "^2.3.0",
-    "rxjs": "^6.4.0"
+    "rxjs": "^6.4.0",
+    "multer": "^1.4.1"
   },
   "license": "ISC"
 }
