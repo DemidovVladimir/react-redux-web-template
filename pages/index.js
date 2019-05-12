@@ -12,6 +12,7 @@ class Index extends React.Component {
 
     static getInitialProps({reduxStore, req}) {
         const isServer = !!req;
+
         return {}
     }
 

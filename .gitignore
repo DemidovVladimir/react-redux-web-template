@@ -1,4 +1,10 @@
+# dependencies
+/node_modules
+
 .gitignore
 .next
 .idea
-node_modules
+
+# misc
+.env
+yarn-error.log*
