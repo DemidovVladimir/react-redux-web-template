@@ -20,12 +20,14 @@ AWS S3
 4. To been able to use the app with nextjs( isomorphic application ) create separate webhooks at mongodb-stitch, because currently mongodb-stitch client for browser and server does not work with isomorphic apps.
 5. To give the ability to use Auth API of the mongodb-atlas, enable the type of the auth service provided by mongo-atlas.
 6. To give the ability to upload pictures and othe files, register on AWS S3 and create the bucket for files.
-7. Populate your achieved credentials to the .ENV file and you should be ready to rock.
+7. Create AWS external service in mongo-stitch.
+8. Populate your achieved credentials to the .ENV file and you should be ready to rock.
 
 
 ### Install now globally with 
 ```
 npm i -g now
+npm i -g nodemon
 ```
 
 ### To run the app locally execute: 
