@@ -18,4 +18,4 @@ nextApp.prepare().then(() => {
         if (err) throw err;
         console.log(`ready at http://localhost:${PORT}`)
     })
-})
+});

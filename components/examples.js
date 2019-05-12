@@ -26,7 +26,7 @@ class Examples extends Component {
                 fileContent: base64Image,
                 fileName: uploadedFile.name,
                 fileType: uploadedFile.type,
-                bucket: 'crossroad-user-files'
+                bucket: process.env.AWS_S3_BUCKET
             });
         }, false);
 
